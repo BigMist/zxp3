@@ -39,7 +39,7 @@
 
 set_global_assignment -name FAMILY "Cyclone IV GX"
 set_global_assignment -name DEVICE EP4CGX150DF27I7
-set_global_assignment -name TOP_LEVEL_ENTITY psd
+set_global_assignment -name TOP_LEVEL_ENTITY guest_top
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 23.1STD.1
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "17:06:25  FEBRUARY 17, 2025"
 set_global_assignment -name LAST_QUARTUS_VERSION "23.1std.1 Lite Edition"
@@ -67,28 +67,6 @@ set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name NUM_PARALLEL_PROCESSORS ALL
 set_global_assignment -name RESERVE_DATA0_AFTER_CONFIGURATION "USE AS REGULAR IO"
 
-set_global_assignment -name VERILOG_FILE psd.v
-set_global_assignment -name VERILOG_FILE pll.v
-
-set_global_assignment -name VERILOG_FILE ../hdl/zx.v
-set_global_assignment -name VERILOG_FILE ../hdl/cpu.v
-set_global_assignment -name VERILOG_FILE ../hdl/psg.v
-set_global_assignment -name VERILOG_FILE ../hdl/ram.v
-set_global_assignment -name VERILOG_FILE ../hdl/spi.v
-set_global_assignment -name VERILOG_FILE ../hdl/usd.v
-set_global_assignment -name VERILOG_FILE ../hdl/dprs.v
-set_global_assignment -name VERILOG_FILE ../hdl/ps2k.v
-set_global_assignment -name VERILOG_FILE ../hdl/ps2m.v
-set_global_assignment -name VERILOG_FILE ../hdl/audio.v
-set_global_assignment -name VERILOG_FILE ../hdl/video.v
-set_global_assignment -name VERILOG_FILE ../hdl/i2s_out.v
-set_global_assignment -name VERILOG_FILE ../hdl/joystick.v
-set_global_assignment -name VERILOG_FILE ../hdl/keyboard.v
-set_global_assignment -name VERILOG_FILE ../hdl/turbosound.v
-set_global_assignment -name VERILOG_FILE ../hdl/scandoubler.v
-
-set_global_assignment -name QIP_FILE ../hdl/T80/files.qip
-set_global_assignment -name QIP_FILE ../hdl/mist/files.qip
 
 set_location_assignment PIN_B14 -to clock50
 
@@ -145,4 +123,15 @@ set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to dram*
 set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to spi*
 set_instance_assignment -name CURRENT_STRENGTH_NEW 4MA -to led*
 
+set_global_assignment -name VERILOG_SHOW_LMF_MAPPING_MESSAGES OFF
+set_global_assignment -name VERILOG_MACRO "USE_CLOCK_50=1"
+set_global_assignment -name VERILOG_MACRO "I2S_AUDIO=1"
+set_global_assignment -name VERILOG_MACRO "BIG_OSD=1"
+set_global_assignment -name VERILOG_INPUT_VERSION SYSTEMVERILOG_2005
+set_global_assignment -name SDC_FILE psd.sdc
+set_global_assignment -name VERILOG_FILE ../hdl/rom_zxp3.v
+set_global_assignment -name QIP_FILE ../T80/T80.qip
+set_global_assignment -name QIP_FILE "../mist-modules/mist.qip"
+set_global_assignment -name SYSTEMVERILOG_FILE ../zxp3.sv
+set_global_assignment -name QIP_FILE ../files.qip
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

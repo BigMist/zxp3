@@ -46,19 +46,19 @@ module pll (
 	output	  c0;
 	output	  locked;
 
-	wire [0:0] sub_wire2 = 1'h0;
-	wire [4:0] sub_wire3;
-	wire  sub_wire5;
-	wire  sub_wire0 = inclk0;
-	wire [1:0] sub_wire1 = {sub_wire2, sub_wire0};
-	wire [0:0] sub_wire4 = sub_wire3[0:0];
-	wire  c0 = sub_wire4;
-	wire  locked = sub_wire5;
+	wire [4:0] sub_wire0;
+	wire  sub_wire2;
+	wire [0:0] sub_wire5 = 1'h0;
+	wire [0:0] sub_wire1 = sub_wire0[0:0];
+	wire  c0 = sub_wire1;
+	wire  locked = sub_wire2;
+	wire  sub_wire3 = inclk0;
+	wire [1:0] sub_wire4 = {sub_wire5, sub_wire3};
 
 	altpll	altpll_component (
-				.inclk (sub_wire1),
-				.clk (sub_wire3),
-				.locked (sub_wire5),
+				.inclk (sub_wire4),
+				.clk (sub_wire0),
+				.locked (sub_wire2),
 				.activeclock (),
 				.areset (1'b0),
 				.clkbad (),
